@@ -51,9 +51,13 @@ class BasePage:
     def full_screen_window(self):
         self.driver.fullscreen_window()
 
+    @allure.step('window_scroll_-100')
+    def window_scroll__100(self):
+        self.driver.execute_script("window.scrollBy(0, -100);")
+
     @allure.step('window_scroll_100')
     def window_scroll_100(self):
-        self.driver.execute_script("window.scrollBy(0, -100);")
+        self.driver.execute_script("window.scrollBy(0, 100);")
 
     @allure.step('action_double_click')
     def action_double_click(self, element):

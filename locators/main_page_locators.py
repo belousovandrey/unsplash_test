@@ -2,11 +2,17 @@ from selenium.webdriver.common.by import By
 
 
 class MainPageLocators:
-    REGIONS_BUTTON = (By.CSS_SELECTOR, '[class="MuiBackdrop-root geo-tooltip__backdrop MuiBackdrop-invisible"]')
-    COOKIE_BUTTON = (By.CSS_SELECTOR, '[class="MuiButtonBase-root MuiIconButton-root icon-button__root icon-button__root_size_default cookies-notification__button"]')
     # login_form
-    MAIN_LOGIN_BUTTON = (By.CSS_SELECTOR, '[class="MuiButtonBase-root MuiButton-root MuiButton-outlined customer-header-login__button-initial"]')
-    LOGIN = (By.CSS_SELECTOR, '[class="MuiInputBase-input MuiInput-input text-field__input"]')
-    PASSWORD = (By.CSS_SELECTOR, '[class="MuiInputBase-input MuiInput-input text-field__input password-input__input MuiInputBase-inputAdornedEnd"]')
-    LOGIN_BUTTON = (By.CSS_SELECTOR, '[class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"]')
-    LOGIN_ERROR = (By.CSS_SELECTOR, '[class="MuiFormHelperText-root Mui-error MuiFormHelperText-filled"]')
+    LOG_IN_BUTTON = (By.CSS_SELECTOR, '[class="cLLOA p1cWU jpBZ0 EzsBC KHq0c XHI2L"]')
+    EMAIL = (By.CSS_SELECTOR, '#user_email')
+    PASSWORD = (By.CSS_SELECTOR, '#user_password')
+    LOGIN_BUTTON = (By.CSS_SELECTOR, '[class="btn btn-default btn-block-level"]')
+    LOGIN_ERROR = (By.CSS_SELECTOR, '[class="col-xs-10 col-sm-6 center-block flash__message"]')
+    # reg_form
+    REG_BUTTON = (By.XPATH, '/html/body/div[2]/div/div/div/div/div[4]/a')
+    FIRST_NAME = (By.CSS_SELECTOR, '#user_first_name')
+    LAST_NAME = (By.CSS_SELECTOR, '#user_last_name')
+    USER_NAME = (By.CSS_SELECTOR, '#user_username')
+    REG_PASSWORD = (By.CSS_SELECTOR, '#user_password')
+    REG_FIN_BUTTON = (By.CSS_SELECTOR, '[class="btn btn-default btn-block-level"]')
+    GOOD_REG = (By.XPATH, '//*[@id="app"]/div/div[2]/div/div[2]/text()[2]')
