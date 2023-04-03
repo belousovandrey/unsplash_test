@@ -1,0 +1,21 @@
+
+# Allure
+#
+#
+# C:\allure-2.21.0\bin\allure.bat --version   # указать каталог установки
+#
+# Set-Alias allure C:\allure-2.21.0\bin\allure.bat     # указать каталог установки
+#
+# allure --version       # проверка правильности установки
+#
+# pip install allure-pytest
+#
+# pytest --alluredir=tests\allure_results .\tests\test_main_page.py   #запуск allure  с указанием каталога с результатими
+#
+# pytest --alluredir=tests\allure_results .\tests\test_main_page.py::TestMainPage::Te
+# stLinks::test_order_link    # запуск одного теста из серии
+#
+#
+# allure serve .\tests\allure_results\          # компановка и выдача результатов
+
+# pip freeze > .\requirements.txt  #>перезаписать все зависимости >>  добавить зависимости
