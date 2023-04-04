@@ -29,6 +29,7 @@ class MainPage(BasePage):
         self.element_is_visible(self.locators.EMAIL).send_keys(email)
         self.element_is_visible(self.locators.USER_NAME).send_keys(user_name)
         self.element_is_visible(self.locators.PASSWORD).send_keys(password)
+        self.go_to_element(self.element_is_visible(self.locators.REG_FIN_BUTTON))
         self.element_is_visible(self.locators.REG_FIN_BUTTON).click()
         result = self.element_is_not_present(self.locators.GOOD_REG)
         return result
