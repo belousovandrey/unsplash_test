@@ -22,3 +22,13 @@ class TestMainPage:
             reg_page.open()
             result = reg_page.reg_form()
             assert result == True, 'ERROR REGISTRATION'
+
+    @allure.feature('TestMenu')
+    class TestMenu:
+        def test_hi_menu(self, driver):
+            hi_menu = MainPage(driver, 'https://unsplash.com/')
+            hi_menu.open()
+            href_link, current_url = hi_menu.get_hi_menu_list()
+            print(href_link, current_url)
+            # assert href_link == current_url, "the link is broken or url is incorrect"
+

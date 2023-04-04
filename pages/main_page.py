@@ -1,7 +1,7 @@
 import time
-
+import requests
 import allure
-
+from selenium.webdriver.common.by import By
 from auth_data import *
 from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
@@ -33,3 +33,21 @@ class MainPage(BasePage):
         self.element_is_visible(self.locators.REG_FIN_BUTTON).click()
         result = self.element_is_not_present(self.locators.GOOD_REG)
         return result
+
+    @allure.step('get_hi_menu_list')
+    def get_hi_menu_list(self):
+
+        for i in range(2,21):
+            simple_link = self.element_is_visible((By.CSS_SELECTOR, f'#app > div > div.b4j4s > div > div > div.BK8tG > div > div.pRk2s > div.VCR4P > ul > li:nth-child({i}) > a')).click()
+            link_href = simple_link.get_attribute('href')
+            request = requests.get(link_href)
+            time.sleep(1)
+            if i%6 == 0:
+                self.element_is_visible(self.locators.MENU_RIGHT).click()
+            if request.status_code == 200:
+                simple_link.click()
+                self.driver.switch_to.window(self.driver.window_handles[1])
+                url = self.driver.current_url
+                return link_href, url
+            else:
+                return link_href, request.status_code
