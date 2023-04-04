@@ -19,3 +19,5 @@
 # allure serve .\tests\allure_results\          # компановка и выдача результатов
 
 # pip freeze > .\requirements.txt  #>перезаписать все зависимости >>  добавить зависимости
+
+# python -m pytest
