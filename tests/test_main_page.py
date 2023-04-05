@@ -31,3 +31,9 @@ class TestMainPage:
             result = hi_menu.get_hi_menu_list()
             assert result == True, f'the link is broken or url is incorrect,{result}'
 
+        def test_hi_right_menu(self, driver):
+            hi_menu = MainPage(driver, 'https://unsplash.com/')
+            hi_menu.open()
+            result = hi_menu.get_hi_right_menu_list()
+            assert result == True, f'the link is broken or url is incorrect,{result}'
+

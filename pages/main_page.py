@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from auth_data import *
 from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
+from selenium.common import TimeoutException
 
 
 class MainPage(BasePage):
@@ -43,8 +44,28 @@ class MainPage(BasePage):
             request = requests.get(link_href)
             if request.status_code == 200:
                 simple_link.click()
-                if i % 5 == 0:
-                    self.element_is_visible(self.locators.MENU_RIGHT).click()
+                try:
+                    if i % 5 == 0:
+                        self.element_is_visible(self.locators.MENU_RIGHT).click()
+                except TimeoutException:
+                    pass
+                self.driver.switch_to.window(self.driver.window_handles[1])
+                url = self.driver.current_url
+                if link_href != url:
+                    return (link_href, request.status_code)
+            else:
+                return (link_href, request.status_code)
+        return True
+
+    @allure.step('get_hi_right_menu_list')
+    def get_hi_right_menu_list(self):
+        for i in range(1, 3):
+            simple_link = self.element_is_visible((By.CSS_SELECTOR,
+                                                   f'#app > div > header > nav > div.ceaSi > div.nOssi > ul > li:nth-child({i}) > a'))
+            link_href = simple_link.get_attribute('href')
+            request = requests.get(link_href)
+            if request.status_code == 200:
+                simple_link.click()
                 self.driver.switch_to.window(self.driver.window_handles[1])
                 url = self.driver.current_url
                 if link_href != url:
