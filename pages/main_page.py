@@ -60,8 +60,49 @@ class MainPage(BasePage):
     @allure.step('get_hi_right_menu_list')
     def get_hi_right_menu_list(self):
         for i in range(1, 3):
+            simple_link = self.element_is_visible((By.CSS_SELECTOR,f'#app > div > header > nav > div.ceaSi > div.nOssi > ul > li:nth-child({i}) > a'))
+            link_href = simple_link.get_attribute('href')
+            request = requests.get(link_href)
+            time.sleep(1)
+            if request.status_code == 200:
+                simple_link.click()
+                time.sleep(1)
+                self.driver.switch_to.window(self.driver.window_handles[1])
+                url = self.driver.current_url
+                if link_href != url:
+                    return (link_href, request.status_code)
+            else:
+                return (link_href, request.status_code)
+        return True
+
+    @allure.step('get_Unsplash_menu_list')
+    def get_unsplash_menu_list(self):
+        simple_link = self.element_is_visible(
+            (By.CSS_SELECTOR, f'#app > div > header > nav > div.ceaSi > div.nOssi > ul > li:nth-child(3) > div > a'))
+        link_href = simple_link.get_attribute('href')
+        request = requests.get(link_href)
+        time.sleep(1)
+        if request.status_code == 200:
+            simple_link.click()
+            time.sleep(1)
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            url = self.driver.current_url
+            if link_href != url:
+                return (link_href, request.status_code)
+        else:
+            return (link_href, request.status_code)
+        return True
+
+
+
+    @allure.step('get_hi_right_menu_list')
+    def get_burger_company(self):
+        for i in range(1, 9):
+            if i == 2 or i == 5 :
+                continue
+            self.element_is_visible(self.locators.MENU_BURGER).click()
             simple_link = self.element_is_visible((By.CSS_SELECTOR,
-                                                   f'#app > div > header > nav > div.ceaSi > div.nOssi > ul > li:nth-child({i}) > a'))
+                                                   f'#popover-secondary-menu > div > div > div > div.oXw2J.RzFNi.m46Yv > ul > li:nth-child(1) > div > ul > li:nth-child({i}) > a'))
             link_href = simple_link.get_attribute('href')
             request = requests.get(link_href)
             if request.status_code == 200:
@@ -70,6 +111,47 @@ class MainPage(BasePage):
                 url = self.driver.current_url
                 if link_href != url:
                     return (link_href, request.status_code)
+
+            else:
+                return (link_href, request.status_code)
+        return True
+
+    @allure.step('get_burger_product')
+    def get_burger_product(self):
+        for i in range(3, 6):
+            self.element_is_visible(self.locators.MENU_BURGER).click()
+            simple_link = self.element_is_visible((By.CSS_SELECTOR,
+                                                   f'#popover-secondary-menu > div > div > div > div.oXw2J.RzFNi.m46Yv > ul > li:nth-child(2) > div > ul > li:nth-child({i}) > a'))
+            link_href = simple_link.get_attribute('href')
+            request = requests.get(link_href)
+            time.sleep(1)
+            if request.status_code == 200:
+                simple_link.click()
+
+                self.driver.switch_to.window(self.driver.window_handles[1])
+                url = self.driver.current_url
+                if link_href != url:
+                    return (link_href, request.status_code)
+            else:
+                return (link_href, request.status_code)
+        return True
+
+    @allure.step('get_hi_right_menu_list')
+    def get_hi_right_menu_list(self):
+        for i in range(1, 3):
+            simple_link = self.element_is_visible((By.CSS_SELECTOR,
+                                                   f'#app > div > header > nav > div.ceaSi > div.nOssi > ul > li:nth-child({i}) > a'))
+            link_href = simple_link.get_attribute('href')
+            request = requests.get(link_href)
+
+            if request.status_code == 200:
+                simple_link.click()
+                self.driver.switch_to.window(self.driver.window_handles[1])
+                url = self.driver.current_url
+                if link_href != url:
+                    return (link_href, request.status_code)
+                time.sleep(1)
+                self.driver.back()
             else:
                 return (link_href, request.status_code)
         return True

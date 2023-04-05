@@ -12,8 +12,7 @@
 #
 # pytest --alluredir=tests\allure_results .\tests\test_main_page.py   #запуск allure  с указанием каталога с результатими
 #
-# pytest --alluredir=tests\allure_results .\tests\test_main_page.py::TestMainPage::Te
-# stLinks::test_order_link    # запуск одного теста из серии
+# pytest --alluredir=tests\allure_results .\tests\test_main_page.py::TestMainPage::TestLinks::test_hi_right_menu    # запуск одного теста из серии
 #
 #
 # allure serve .\tests\allure_results\          # компановка и выдача результатов

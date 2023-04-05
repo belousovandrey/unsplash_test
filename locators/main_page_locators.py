@@ -18,5 +18,5 @@ class MainPageLocators:
     GOOD_REG = (By.XPATH, '//*[@id="app"]/div/div[2]/div/div[2]/text()[2]')
     # Menu
     MENU_RIGHT = (By.CSS_SELECTOR, '[class="YbtJk jpBZ0 LCoFy cC9j1"]')
-    MENU_ITEM = (By.XPATH, '#app > div > div.b4j4s > div > div > div.BK8tG > div > div.pRk2s > div.VCR4P > ul > li:nth-child(2) > a')
-    MENU_ITEM = (By.XPATH, '//*[@id="app"]/div/div[2]/div/div/div[3]/div/div[2]/div[2]/ul/li[3]/a')
+    MENU_BURGER = (By.CSS_SELECTOR, '#popover-secondary-menu > button')
+    MAIN_MENU = (By.CSS_SELECTOR, '[class="XDKcL eziW_"]')
