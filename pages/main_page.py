@@ -7,6 +7,8 @@ from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 from selenium.common import TimeoutException
 
+from .base_page import BasePage
+
 
 class MainPage(BasePage):
     locators = MainPageLocators()
@@ -98,7 +100,7 @@ class MainPage(BasePage):
     @allure.step('get_hi_right_menu_list')
     def get_burger_company(self):
         for i in range(1, 9):
-            if i == 2 or i == 5 :
+            if i == 2 or i == 5:
                 continue
             self.element_is_visible(self.locators.MENU_BURGER).click()
             simple_link = self.element_is_visible((By.CSS_SELECTOR,
@@ -107,18 +109,19 @@ class MainPage(BasePage):
             request = requests.get(link_href)
             if request.status_code == 200:
                 simple_link.click()
-                self.driver.switch_to.window(self.driver.window_handles[1])
+                self.driver.switch_to.window(self.driver.window_handles[0])
                 url = self.driver.current_url
                 if link_href != url:
                     return (link_href, request.status_code)
-
             else:
                 return (link_href, request.status_code)
         return True
 
     @allure.step('get_burger_product')
     def get_burger_product(self):
-        for i in range(3, 6):
+        for i in range(3, 7):
+            if i == 5 :
+                continue
             self.element_is_visible(self.locators.MENU_BURGER).click()
             simple_link = self.element_is_visible((By.CSS_SELECTOR,
                                                    f'#popover-secondary-menu > div > div > div > div.oXw2J.RzFNi.m46Yv > ul > li:nth-child(2) > div > ul > li:nth-child({i}) > a'))
@@ -128,10 +131,11 @@ class MainPage(BasePage):
             if request.status_code == 200:
                 simple_link.click()
 
-                self.driver.switch_to.window(self.driver.window_handles[1])
+                self.driver.switch_to.window(self.driver.window_handles[0])
                 url = self.driver.current_url
                 if link_href != url:
                     return (link_href, request.status_code)
+                self.driver.back()
             else:
                 return (link_href, request.status_code)
         return True
