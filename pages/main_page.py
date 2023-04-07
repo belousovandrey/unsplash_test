@@ -129,7 +129,6 @@ class MainPage(BasePage):
                                                    f'#popover-secondary-menu > div > div > div > div.oXw2J.RzFNi.m46Yv > ul > li:nth-child(2) > div > ul > li:nth-child({i}) > a'))
             link_href = simple_link.get_attribute('href')
             request = requests.get(link_href)
-            time.sleep(1)
             if request.status_code == 200:
                 simple_link.click()
                 self.driver.switch_to.window(self.driver.window_handles[-1])
@@ -142,15 +141,16 @@ class MainPage(BasePage):
         return True
 
     @allure.step('get_hi_right_menu_list')
-    def get_hi_right_menu_list(self):
-        for i in range(1, 3):
+    def get_burger_community(self):
+        for i in range(1, 7):
+            self.element_is_visible(self.locators.MENU_BURGER).click()
             simple_link = self.element_is_visible((By.CSS_SELECTOR,
-                                                   f'#app > div > header > nav > div.ceaSi > div.nOssi > ul > li:nth-child({i}) > a'))
+                                                   f'#popover-secondary-menu > div > div > div > div.oXw2J.RzFNi.m46Yv > ul > li:nth-child(3) > div > ul > li:nth-child({i}) > a'))
             link_href = simple_link.get_attribute('href')
             request = requests.get(link_href)
             if request.status_code == 200:
                 simple_link.click()
-                self.driver.switch_to.window(self.driver.window_handles[0])
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 url = self.driver.current_url
                 if link_href != url:
                     return (link_href, request.status_code)

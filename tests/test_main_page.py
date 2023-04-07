@@ -33,14 +33,14 @@ class TestMainPage:
             result = hi_menu.get_hi_menu_list()
             assert result == True, f'the link is broken or url is incorrect,{result}'
 
-        @allure.title('login_page')
+        @allure.title('test_hi_right_menu')
         def test_hi_right_menu(self, driver):
             hi_menu = MainPage(driver, 'https://unsplash.com/')
             hi_menu.open()
             result = hi_menu.get_hi_right_menu_list()
             assert result == True, f'the link is broken or url is incorrect,{result}'
 
-        @allure.title('login_page')
+        @allure.title('test_unsplash_menu_list')
         def test_unsplash_menu_list(self, driver):
             hi_menu = MainPage(driver, 'https://unsplash.com/')
             hi_menu.open()
@@ -50,14 +50,14 @@ class TestMainPage:
     @allure.feature('TestMenu')
     class TestBurger:
 
-        @allure.title('login_page')
+        @allure.title('test_burger_company')
         def test_burger_company(self, driver):
             burger_company = MainPage(driver, 'https://unsplash.com/')
             burger_company.open()
             result = burger_company.get_burger_company()
             assert result == True, f'the link is broken or url is incorrect,{result}'
 
-        @allure.title('login_page')
+        @allure.title('test_burger_product')
         def test_burger_product(self, driver):
             burger_product = MainPage(driver, 'https://unsplash.com/')
             burger_product.open()
@@ -65,10 +65,10 @@ class TestMainPage:
             result = burger_product.get_burger_product()
             assert result == True, f'the link is broken or url is incorrect,{result}'
 
-        # @allure.title('login_page')
-        # def test_hi_menu(self, driver):
-        #     hi_menu = MainPage(driver, 'https://unsplash.com/')
-        #     hi_menu.open()
-        #     result = hi_menu.get_hi_menu_list()
-        #     assert result == True, f'the link is broken or url is incorrect,{result}'
+        @allure.title('test_burger_community')
+        def test_burger_community(self, driver):
+            hi_menu = MainPage(driver, 'https://unsplash.com/')
+            hi_menu.open()
+            result = hi_menu.get_burger_community()
+            assert result == True, f'the link is broken or url is incorrect,{result}'
 
