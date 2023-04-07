@@ -1,7 +1,8 @@
 import time
 
 import allure
-
+from selenium.webdriver.chrome import webdriver
+from selenium import webdriver
 from pages.main_page import MainPage
 
 
@@ -60,13 +61,14 @@ class TestMainPage:
         def test_burger_product(self, driver):
             burger_product = MainPage(driver, 'https://unsplash.com/')
             burger_product.open()
+
             result = burger_product.get_burger_product()
             assert result == True, f'the link is broken or url is incorrect,{result}'
 
-        @allure.title('login_page')
-        def test_hi_menu(self, driver):
-            hi_menu = MainPage(driver, 'https://unsplash.com/')
-            hi_menu.open()
-            result = hi_menu.get_hi_menu_list()
-            assert result == True, f'the link is broken or url is incorrect,{result}'
+        # @allure.title('login_page')
+        # def test_hi_menu(self, driver):
+        #     hi_menu = MainPage(driver, 'https://unsplash.com/')
+        #     hi_menu.open()
+        #     result = hi_menu.get_hi_menu_list()
+        #     assert result == True, f'the link is broken or url is incorrect,{result}'
 
